@@ -14,10 +14,6 @@ function computerPlay() {
   }
 }
 
-//assigns variables to player and ai opponent
-let playerSelection = "rock";
-// let computerSelection = computerPlay();
-
 //function to play one round and return message about who won.
 function playRound(playerSelection, computerSelection) {
   let x = playerSelection.toLowerCase();
@@ -47,6 +43,8 @@ function playRound(playerSelection, computerSelection) {
     return true;
   } else if (x == "scissors" && y == "scissors") {
     console.log("You Tie!  Scissors and Scissors Tie!");
+  } else {
+    console.log("invalid input");
   }
 }
 
@@ -55,8 +53,10 @@ function game() {
   yourScore = 0;
   enemyScore = 0;
   for (let i = 0; i < 5; i++) {
-    console.log("***round " + (i + 1) + "***");
-    let computerSelection = computerPlay();
+    console.log("***round " + (i + 1) + "***"); //Shows which round we are on
+    let computerSelection = computerPlay(); //stores computers choice
+    let playerSelection = prompt("Rock, Paper, or Scissors?"); //stores user input
+
     let result = playRound(playerSelection, computerSelection);
 
     if (result == true) {
