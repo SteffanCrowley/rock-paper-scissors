@@ -1,7 +1,7 @@
 //returns random number that is assigned to rock, paper, or scissor.
 function computerPlay() {
   let x = Math.floor(Math.random() * 3);
-  console.log(x);
+  //   console.log(x);
   if (x == 0) {
     let z = "rock";
     return z;
@@ -9,14 +9,13 @@ function computerPlay() {
     let z = "paper";
     return z;
   } else if (x == 2) {
-    let z = "scissor";
+    let z = "scissors";
     return z;
   }
 }
 
 //assigns variables to player and ai opponent
 let playerSelection = "rock";
-let computerSelection = "scissors";
 // let computerSelection = computerPlay();
 
 //function to play one round and return message about who won.
@@ -25,24 +24,59 @@ function playRound(playerSelection, computerSelection) {
   let y = computerSelection.toLowerCase();
 
   if (x == "rock" && y == "rock") {
-    return "You Tie!  Rock and Rock Tie!";
+    console.log("You Tie!  Rock and Rock Tie!");
   } else if (x == "rock" && y == "paper") {
-    return "You Lose!  Rock loses to Paper!";
+    console.log("You Lose!  Rock loses to Paper!");
+    return false;
   } else if (x == "rock" && y == "scissors") {
-    return "You Win!  Rock beats Scissors!";
+    console.log("You Win!  Rock beats Scissors!");
+    return true;
   } else if (x == "paper" && y == "rock") {
-    return "You Win!  Paper beats Rock!";
+    console.log("You Win!  Paper beats Rock!");
+    return true;
   } else if (x == "paper" && y == "paper") {
-    return "You Tie!  Paper and Paper Tie!";
+    console.log("You Tie!  Paper and Paper Tie!");
   } else if (x == "paper" && y == "scissors") {
-    return "You Lose!  Paper loses to Scissors!";
+    console.log("You Lose!  Paper loses to Scissors!");
+    return false;
   } else if (x == "scissors" && y == "rock") {
-    return "You Lose!  Scissors loses to Paper!";
+    console.log("You Lose!  Scissors loses to Paper!");
+    return false;
   } else if (x == "scissors" && y == "paper") {
-    return "You Win!  Scissors beats Paper!";
+    console.log("You Win!  Scissors beats Paper!");
+    return true;
   } else if (x == "scissors" && y == "scissors") {
-    return "You Tie!  Scissors and Scissors Tie!";
+    console.log("You Tie!  Scissors and Scissors Tie!");
   }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+//playes five rounds of the game and returns the score.
+function game() {
+  yourScore = 0;
+  enemyScore = 0;
+  for (let i = 0; i < 5; i++) {
+    console.log("***round " + (i + 1) + "***");
+    let computerSelection = computerPlay();
+    let result = playRound(playerSelection, computerSelection);
+
+    if (result == true) {
+      yourScore++;
+    } else if (result == false) {
+      enemyScore++;
+    }
+  }
+  //   console.log(enemyScore);
+  //   console.log(yourScore);
+  console.log(whoWins(yourScore, enemyScore));
+}
+
+//takes your score and enemy score and decides who wins
+function whoWins(x, y) {
+  if (x > y) {
+    return "congrats! you win " + yourScore + " - " + enemyScore;
+  } else if (x < y) return "you lose! " + yourScore + " - " + enemyScore;
+  else if (x == y) return "you tie! " + yourScore + " - " + enemyScore;
+}
+
+//starts the game
+game();
