@@ -1,7 +1,10 @@
+//created by Steffan Crowley on May 3, 2022.
+//Simple rock, paper, scissors game that plays through five rounds.
+//user chooses their selection and opponent is created using random number generator.
+
 //returns random number that is assigned to rock, paper, or scissor.
 function computerPlay() {
   let x = Math.floor(Math.random() * 3);
-  //   console.log(x);
   if (x == 0) {
     let z = "rock";
     return z;
@@ -65,8 +68,6 @@ function game() {
       enemyScore++;
     }
   }
-  //   console.log(enemyScore);
-  //   console.log(yourScore);
   console.log(whoWins(yourScore, enemyScore));
 }
 
