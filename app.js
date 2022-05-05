@@ -18,7 +18,8 @@ function computerPlay() {
 }
 
 //function to play one round and return message about who won.
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+  let computerSelection = computerPlay();
   let x = playerSelection.toLowerCase();
   let y = computerSelection.toLowerCase();
 
@@ -79,5 +80,16 @@ function whoWins(x, y) {
   else if (x == y) return "you tie! " + yourScore + " - " + enemyScore;
 }
 
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    playRound(button.id);
+  });
+});
+
 //starts the game
-game();
+// game();
